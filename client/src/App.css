@@ -1,0 +1,60 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 10;
+    padding: 10;
+    background-color: #F7F7F7;
+  }
+  #root {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+  }
+  h1 {
+    color: #2C3E50;
+  }
+  .weather-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .weather-info {
+    text-align: left;
+  }
+  .temperature {
+    font-size: 2em;
+    color: #3498DB;
+  }
+  .weather-description {
+    color: #7F8C8D;
+  }
+  .location {
+    margin-top: 10px;
+    color: #27AE60;
+  }
+  .button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #E74C3C;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .button:hover {
+    background-color: #C0392B;
+  }
+  .temperature::before {
+    content: '25°C'; / /* TEMPURATURE OF LOCATION CHOOSING
+  .weather-description::before {
+    content: 'Sunny'; /* weather description of what API is chosing
+  }
+  .location::before {
+    content: 'City, Country'; /* depends on location api group decisions
+  }
