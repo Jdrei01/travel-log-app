@@ -23,7 +23,18 @@ function Home(props) {
   return (
     <div className="list-group">
       <h1>Travel Log</h1>
-      
+      <form>
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" required />
+
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" required /> 
+
+        <label for="temperature">Temperature</label>
+        <input type="number" id="temperature" name="temperature" required />
+
+        <input type="submit" value="Submit" />
+        </form>
     </div>
   );
 }
