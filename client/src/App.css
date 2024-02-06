@@ -51,10 +51,12 @@ body {
     background-color: #C0392B;
   }
   .temperature::before {
-    content: '25°C'; / /* TEMPURATURE OF LOCATION CHOOSING
-  .weather-description::before {
-    content: 'Sunny'; /* weather description of what API is chosing
+    content: '25°C'; / 
   }
+  .weather-description::before {
+    content: 'Sunny'; 
+  }
+
   .location::before {
-    content: 'City, Country'; /* depends on location api group decisions
+    content: 'City, Country'; 
   }
