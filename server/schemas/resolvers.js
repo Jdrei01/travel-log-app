@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Post } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -20,6 +20,10 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addPost: async (parent, args) => {
+      const post = await Post.create(args);
+      return post;
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

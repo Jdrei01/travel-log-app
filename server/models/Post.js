@@ -1,18 +1,24 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema, model } = require('mongoose');
 
-class Post extends Model { }
-
-Post.init(
-  {
-    game: DataTypes.STRING,
-    genre: DataTypes.STRING, 
-    rating: DataTypes.INTEGER, 
-    video_embed: DataTypes.TEXT
-  },
-  {
-    sequelize,
-  }
+const postSchema = new Schema(
+    {
+      location: {
+        type: String,
+        required: true,
+        unique: true,
+      },
+      description: {
+        type: String,
+        required: true,
+        unique: true,
+      },
+      temperature: {
+        type: Number,
+        required: true,
+      },
+    },
 );
+
+const Post = model('Post', postSchema);
 
 module.exports = Post;

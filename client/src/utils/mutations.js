@@ -23,3 +23,14 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_POST = gql`
+mutation addPost($location: String!, $description: String!, $temperature: Int!) {
+  addPost(location: $location, description: $description, temperature: $temperature) {
+    _id
+    location
+    description
+    temperature
+  }
+}
+`;
