@@ -12,6 +12,9 @@ const resolvers = {
 
       throw AuthenticationError;
     },
+    allPosts: async () => {
+      return await Post.find();
+    }
   },
 
   Mutation: {
