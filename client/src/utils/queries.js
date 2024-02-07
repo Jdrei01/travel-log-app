@@ -9,3 +9,14 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const ALL_POSTS=gql`
+query allPosts {
+  allPosts {
+    _id
+    description
+    location
+    temperature
+  }
+}
+`
