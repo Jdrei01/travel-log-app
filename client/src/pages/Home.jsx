@@ -9,6 +9,7 @@ function Home(props) {
   const [addPost, { error }] = useMutation(ADD_POST);
   const { loading, data } = useQuery(ALL_POSTS);
   const posts = data?.allPosts || [];
+ 
 
   const [formState, setFormState] = useState({
     location: '',
@@ -49,15 +50,15 @@ function Home(props) {
 
       <form onSubmit={handleSubmit}>
         <label for="location">Location</label>
-        <input type="text" id="location" name="location" value={formState.location} onChange={handleChange} required />
+        <input prop="" type="text" id="location" name="location" value={formState.location} onChange={handleChange} required />
 
         <label for="description">Description</label>
-        <input type="text" id="description" name="description" value={formState.description} onChange={handleChange} required /> 
+        <input prop="" type="text" id="description" name="description" value={formState.description} onChange={handleChange} required /> 
 
         <label for="temperature">Temperature</label>
-        <input type="number" id="temperature" name="temperature" value={formState.temperature} onChange={handleChange} required />
+        <input prop="" type="number" id="temperature" name="temperature" value={formState.temperature} onChange={handleChange} required />
 
-        <input type="submit" value="Submit" />
+        <input prop="" type="submit" value="Submit" />
         </form>
 
       {posts.map((post) => {
@@ -77,15 +78,7 @@ function Home(props) {
       <h3>Map</h3>
       <MapComponent />
     </div>
-
   </div>
-
-        <div id="login">
-
-        <h3>Login/Signup</h3>
-    
-        </div>
-    
     </div>
   );
 }

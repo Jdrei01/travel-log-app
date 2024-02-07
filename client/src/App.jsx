@@ -38,7 +38,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <AppNavbar />
-      <div id='my-root'>
+      <div className="--bs-primary-bg-subtle" id='my-root'>
         <Outlet />
       </div>
     </ApolloProvider>
