@@ -3,6 +3,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './pages/Home.jsx'
 import App from './App.jsx'
+import LoginPage from './pages/loginPage.jsx'
+import Auth from './utils/auth.js'
 
 const router = createBrowserRouter([
   {
@@ -12,12 +14,12 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: Auth.loggedIn() ? <Home />: <LoginPage />
       }, 
-      // {
-      //   path: '/saved',
-      //   element: <SavedBooks />
-      // }
+      {
+        path: '/login',
+        element: <LoginPage />
+      },
     ]
   }
 ])
