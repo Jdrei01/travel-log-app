@@ -7,6 +7,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import AppNavbar from './components/Navbar';
 
 
 // Construct our main GraphQL API endpoint
@@ -36,8 +37,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      
-      <Outlet />
+      <AppNavbar />
+      <div id='my-root'>
+        <Outlet />
+      </div>
     </ApolloProvider>
   );
 }

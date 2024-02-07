@@ -4,7 +4,7 @@ body {
     padding: 10;
     background-color: #F7F7F7;
   }
-  #root {
+  #my-root {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
@@ -65,3 +65,5 @@ body {
   display: flex
 
 }
+
+/* loginpage.css */

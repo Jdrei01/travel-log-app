@@ -1,12 +1,11 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
-
+import '../styles/loginPage.css'
 function LoginPage() {
   return (
-    <div>
+    <div className='log-in-page'>
       <div>
-        <h1>Login and Signup</h1>
         <h2>LOGIN</h2>
         <LoginForm />
       </div>
