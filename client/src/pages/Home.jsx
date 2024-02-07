@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ADD_POST } from '../utils/mutations.js';
 import { ALL_POSTS } from '../utils/queries.js';
 import { useMutation, useQuery } from '@apollo/client';
+import MapComponent from './map.jsx';
 
 function Home(props) {
   const [addPost, { error }] = useMutation(ADD_POST);
@@ -67,6 +68,15 @@ function Home(props) {
           </div>
         )
         })}
+
+
+
+       <div>
+    <div>
+      <h3>Map</h3>
+      <MapComponent />
+    </div>
+  </div>
     </div>
   );
 }
