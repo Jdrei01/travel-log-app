@@ -22,6 +22,8 @@ const typeDefs = gql`
     location: String
     description: String
     temperature: Int
+    lat: String
+    lng: String
   }
 
   type Mutation {

@@ -17,6 +17,8 @@ query allPosts {
     description
     location
     temperature
+    lat
+    lng
   }
 }
 `
