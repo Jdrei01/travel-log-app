@@ -29,6 +29,20 @@ function Home(props) {
     event.preventDefault();
     console.table(formState);
 
+    const newPost = {
+      location: formState.location,
+      description: formState.description,
+      temperature: formState.temperature,
+    };
+
+    setPosts([...posts, newPost]);
+
+    setFormState({
+      location: '',
+      description: '',
+      temperature: '',
+    });
+
     await addPost({
       variables: {
         ...formState,
@@ -67,18 +81,19 @@ function Home(props) {
             <p>Location: {post.location}</p>
             <p>Description: {post.description}</p>
             <p>Temp: {post.temperature}</p>
+            <p>Lat: {post.lat}</p>
+            <p>Lng: {post.lng}</p>
           </div>
         )
         })}
 
-
-
        <div>
     <div>
       <h3>Map</h3>
-      <MapComponent />
+      <MapComponent posts={posts} />
     </div>
   </div>
+
     </div>
   );
 }

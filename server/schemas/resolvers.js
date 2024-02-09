@@ -1,5 +1,6 @@
 const { User, Post } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const axios = require('axios');
 
 const resolvers = {
   Query: {
@@ -25,7 +26,19 @@ const resolvers = {
       return { token, user };
     },
     addPost: async (parent, args) => {
-      const post = await Post.create(args);
+      console.log(args);
+      const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+        args.location
+      )}&key=AIzaSyAzvl6nelJ7MoPM0TcOqnVOr2PkoOUq_iw`);
+
+      const { lat, lng } = response.data.results[0].geometry.location;
+      // console.log(lat, lng);
+
+      const post = await Post.create({
+        ...args,
+        lat,
+        lng
+      });
       return post;
     },
     login: async (parent, { email, password }) => {

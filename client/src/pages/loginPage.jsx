@@ -6,7 +6,7 @@ function LoginPage() {
   return (
     <div className='log-in-page'>
       <div>
-        <h2>LOGIN</h2>
+        <h2>Login</h2>
         <LoginForm />
       </div>
 
