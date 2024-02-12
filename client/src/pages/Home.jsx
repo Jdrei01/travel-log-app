@@ -29,6 +29,20 @@ function Home(props) {
     event.preventDefault();
     console.table(formState);
 
+    const newPost = {
+      location: formState.location,
+      description: formState.description,
+      temperature: formState.temperature,
+    };
+
+    setPosts([...posts, newPost]);
+
+    setFormState({
+      location: '',
+      description: '',
+      temperature: '',
+    });
+
     await addPost({
       variables: {
         ...formState,
@@ -62,23 +76,40 @@ function Home(props) {
         </form>
 
       {posts.map((post) => {
+        var keyStyle = {
+          fontSize: "18px"
+        }
+        var valueStyle = {
+          fontSize: "16px",
+          color: "maroon"
+        }
+        var tempStyle = {
+          fontSize: "16px",
+          color: "orange"
+        }
+        var descStyle = {
+          fontSize: "16px",
+          color: "green"
+        }
         return (
           <div>
-            <p>Location: {post.location}</p>
-            <p>Description: {post.description}</p>
-            <p>Temp: {post.temperature}</p>
+            <p style={keyStyle}>Location:<span style={valueStyle}>{post.location},    </span>
+            Description:<span style={descStyle}>{post.description},    </span>
+            Temp:<span  style={tempStyle}>{post.temperature}    </span>
+            {/* <span>Lat: {post.lat}</span>
+            <span>Lng: {post.lng}</span> */}
+            </p>
           </div>
         )
         })}
 
-
-
        <div>
     <div>
       <h3>Map</h3>
-      <MapComponent />
+      <MapComponent posts={posts} />
     </div>
   </div>
+
     </div>
   );
 }
