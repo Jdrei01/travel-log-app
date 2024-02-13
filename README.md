@@ -8,7 +8,7 @@ We conducted this project to demonstrate our knowledge with React as well as und
 
 ## Installation
 
-Run npm i to install basic dependencies, and run npm develop to run the program.
+Run npm i to install basic dependencies, and do npm run develop to run the program.
 
 ## Usage
 
