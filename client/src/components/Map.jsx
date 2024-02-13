@@ -11,7 +11,7 @@ const center = {
   lng: -118.00
 };
 
-function MapComponent({ posts }) {
+function Map ({ posts }) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyAzvl6nelJ7MoPM0TcOqnVOr2PkoOUq_iw"
@@ -28,7 +28,7 @@ function MapComponent({ posts }) {
   });
 
   const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
+    // This is just an example of getting and using the map instance
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
 
@@ -85,4 +85,4 @@ function MapComponent({ posts }) {
   ) : <></>
 }
 
-export default React.memo(MapComponent)
+export default React.memo(Map)

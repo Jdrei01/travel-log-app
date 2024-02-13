@@ -10,6 +10,12 @@ import { setContext } from '@apollo/client/link/context';
 import AppNavbar from './components/Navbar';
 
 
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import Stripe from './components/Stripe';
+
+
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -38,9 +44,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <AppNavbar />
+
       <div className="--bs-primary-bg-subtle" id='my-root'>
         <Outlet />
-      </div>
+
+       </div>
     </ApolloProvider>
   );
 }

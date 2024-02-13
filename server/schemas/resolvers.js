@@ -19,14 +19,21 @@ const resolvers = {
   },
 
   Mutation: {
+
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
+
+
+
+
     addPost: async (parent, args) => {
+
       console.log(args);
+
       const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
         args.location
       )}&key=AIzaSyAzvl6nelJ7MoPM0TcOqnVOr2PkoOUq_iw`);
@@ -41,6 +48,9 @@ const resolvers = {
       });
       return post;
     },
+
+
+    
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

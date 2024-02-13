@@ -2,8 +2,9 @@ import { useState } from 'react'
 import { ADD_POST } from '../utils/mutations.js';
 import { ALL_POSTS } from '../utils/queries.js';
 import { useMutation, useQuery } from '@apollo/client';
-import MapComponent from './map.jsx';
+import Map from '../components/Map.jsx';
 import LoginPage from './loginPage.jsx';
+import '../styles/HomePage.css';
 
 function Home(props) {
   const [addPost, { error }] = useMutation(ADD_POST);
@@ -35,7 +36,7 @@ function Home(props) {
       temperature: formState.temperature,
     };
 
-    setPosts([...posts, newPost]);
+    // setPosts([...posts, newPost]);
 
     setFormState({
       location: '',
@@ -90,7 +91,7 @@ function Home(props) {
        <div>
     <div>
       <h3>Map</h3>
-      <MapComponent posts={posts} />
+      <Map posts={posts} />
     </div>
   </div>
 
