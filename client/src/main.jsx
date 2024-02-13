@@ -6,6 +6,7 @@ import App from './App.jsx';
 import LoginPage from './pages/loginPage.jsx';
 import Auth from './utils/auth.js';
 import Stripe from './components/Stripe.jsx';
+import Profile from './pages/Profile.jsx';
 
 const router = (
   <Router>
@@ -14,6 +15,7 @@ const router = (
         <Route index element={Auth.loggedIn() ? <Home /> : <LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/donate" element={<Stripe />} />
+        <Route path="/profile" element={<Profile />} />
       </Route>
     </Routes>
   </Router>

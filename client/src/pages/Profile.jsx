@@ -1,62 +1,67 @@
-import { useState, useEffect } from "react";
-import { useSelector} from "react"; 
+import React, { useState, useEffect } from "react";
+import { useQuery, gql } from "@apollo/client";
+import { ALL_POSTS } from "../utils/queries";
 
+const GET_USER_DATA = gql`
+  query GetUser {
+    user {
+      id
+      firstName
+      lastName
+      posts {
+        id
+        title
+        content
+      }
+    }
+  }
+`;
 
-const Profile = () => {
-    const token = useSelector((state) => state.auth.value)
-    const [profile, setProfile] = useState([])
-    const [posts, setPosts] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
+function Profile() {
+    const { loading, error, data } = useQuery(ALL_POSTS);
+    const [profile, setProfile] = useState({});
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        const getData = async () => {
-            const response = await api.call(endpoints.me, {}, token)
-            setProfile(response.results.profile)
-            setPosts(response.results.posts)
-            setIsLoading(false)
+        if (!loading && data) {
+            setProfile(data.user);
+            setPosts(data.user.posts);
         }
-        getData()
+    }, [loading, data]);
 
-    }, [token])
-
-    function deleteListItem(_id) {
-        setPosts(posts.filter(post => post._id !== _id))
+    function deleteListItem(postId) {
+        setPosts(posts.filter(post => post.id !== postId));
     }
 
-    function updateListItem(post) {
-        const updatedPosts = posts.map((p) => {
-            if (post._id === p._id) {
-                return post
-            } else {
-                return p
-            }
-        })
-        setPosts(updatedPosts)
-
+    function updateListItem(updatedPost) {
+        setPosts(posts.map(post => (post.id === updatedPost.id ? updatedPost : post)));
     }
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
 
     return (
-        <>
-            {!isLoading &&
-                <div className="profile-page">
-                    <div id='posts-section'>
-                        <PostList
-                            posts={posts}
-                            onDelete={deleteListItem}
-                            onEdit={updateListItem}
-                        />
+        <div className="profile-page">
+            <div id="posts-section">
+                {posts.map(post => (
+                    <div key={post.id}>
+                        <h3>{post.title}</h3>
+                        <p>{post.content}</p>
+                        <button onClick={() => deleteListItem(post.id)}>Delete</button>
+                        <button onClick={() => updateListItem({ ...post, content: "Updated content" })}>
+                            Update
+                        </button>
                     </div>
-                    <div id='profile-section'>
-                        <Image className='profile-picture' fluid src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" />
-                        <h4>{profile.firstName + " " + profile.lastName}</h4>
-                        <p>Bio</p>
-                        <Link to={'/create-post'} className='create-post-link'>New Post</Link >
-                    </div>
-                </div>
-
-            }
-        </>
-
-    )
+                ))}
+            </div>
+            <div id="profile-section">
+                <img className="profile-picture" src="https://cdn.example.com/profile-picture.png" alt="Profile" />
+                <h4>{profile.firstName} {profile.lastName}</h4>
+                <p>Bio</p>
+                <a href="/create-post" className="create-post-link">New Post</a>
+            </div>
+        </div>
+    );
 }
-export default withLayout(Profile)
+
+export default Profile;

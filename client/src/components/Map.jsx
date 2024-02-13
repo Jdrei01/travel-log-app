@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react';
 import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '400px',
@@ -17,15 +18,22 @@ function Map ({ posts }) {
     googleMapsApiKey: "AIzaSyAzvl6nelJ7MoPM0TcOqnVOr2PkoOUq_iw"
   })
 
+  const [coordinates, setCoordinates] = React.useState([]);
   const [location, setLocation] = React.useState('')
   const [map, setMap] = React.useState(null)
-  // const [coordinates, setCoordinates] = React.useState(null)
+ 
+
+
+useEffect(() => {
   const coordinates = posts.map(post => {
     return {
       lat: post.lat,
       lng: post.lng
     }
   });
+  setCoordinates(coordinates);
+}, [posts]);
+
 
   const onLoad = React.useCallback(function callback(map) {
     // This is just an example of getting and using the map instance
