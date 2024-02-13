@@ -36,8 +36,7 @@ function Home(props) {
       temperature: formState.temperature,
     };
 
-    // setPosts([...posts, newPost]);
-
+ 
     setFormState({
       location: '',
       description: '',
@@ -76,17 +75,17 @@ function Home(props) {
         <input prop="" type="submit" value="Submit" />
         </form>
 
-      {posts.map((post) => {
-        return (
-          <div key={post._id}>
-            <p>Location: {post.location}</p>
-            <p>Description: {post.description}</p>
-            <p>Temp: {post.temperature}</p>
-            <p>Lat: {post.lat}</p>
-            <p>Lng: {post.lng}</p>
-          </div>
-        )
-        })}
+        <div id='posts-section'>
+      {posts.map((post) => (
+        <div key={post._id} className="post-container">
+          <h2>{post.location}</h2>
+          <p>Description: {post.description}</p>
+          <p>Temperature: {post.temperature}</p>
+          <p>Latitude: {post.lat}</p>
+          <p>Longitude: {post.lng}</p>
+        </div>
+      ))}
+    </div>
 
        <div>
     <div>
