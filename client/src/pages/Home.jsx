@@ -15,7 +15,7 @@ function Home(props) {
   const [formState, setFormState] = useState({
     location: '',
     description: '',
-    temperature: null
+    temperature: 0
   })
 
   const handleChange = (event) => {
@@ -64,13 +64,13 @@ function Home(props) {
       <h1>Travel Log</h1>
 
       <form onSubmit={handleSubmit}>
-        <label for="location">Location</label>
+        <label forhtml="location">Location</label>
         <input prop="" type="text" id="location" name="location" value={formState.location} onChange={handleChange} required />
 
-        <label for="description">Description</label>
+        <label forhtml="description">Description</label>
         <input prop="" type="text" id="description" name="description" value={formState.description} onChange={handleChange} required /> 
 
-        <label for="temperature">Temperature</label>
+        <label forhtml="temperature">Temperature</label>
         <input prop="" type="number" id="temperature" name="temperature" value={formState.temperature} onChange={handleChange} required />
 
         <input prop="" type="submit" value="Submit" />
@@ -78,7 +78,7 @@ function Home(props) {
 
       {posts.map((post) => {
         return (
-          <div>
+          <div key={post._id}>
             <p>Location: {post.location}</p>
             <p>Description: {post.description}</p>
             <p>Temp: {post.temperature}</p>
