@@ -19,19 +19,20 @@ const AppNavbar = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar' className='d-flex flex-row-reverse'>
-            <Nav className='ml-auto d-flex'>
-              <Nav.Link as={Link} to='/'>
-                Add Locations
-              </Nav.Link>
-              {/* if user is logged in show saved books and logout */}
-              {Auth.loggedIn() ? (
-                <>
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-                </>
-              ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
-              )}
-            </Nav>
+          <Nav className='ml-auto d-flex'>
+  <Nav.Link as={Link} to='/'>
+    Add Locations
+  </Nav.Link>
+  {/* Conditional rendering based on user authentication status */}
+  {Auth.loggedIn() ? (
+    <>
+      <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+      <Nav.Link as={Link} to="/donate">Donate!</Nav.Link>
+    </>
+  ) : (
+    <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+  )}
+</Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -12,6 +12,8 @@
   "dependencies": {
     "@apollo/client": "^3.7.14",
     "@react-google-maps/api": "^2.19.2",
+    "@stripe/react-stripe-js": "^2.4.0",
+    "@stripe/stripe-js": "^2.4.0",
     "bootstrap": "^5.3.2",
     "graphql": "^16.6.0",
     "jwt-decode": "^3.1.2",
