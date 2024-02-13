@@ -17,6 +17,9 @@ const postSchema = new Schema(
     lat: String,
     lng: String
   },
+  {
+    timestamps:true
+  }
 );
 
 const Post = model('Post', postSchema);

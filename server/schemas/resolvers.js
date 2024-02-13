@@ -14,7 +14,7 @@ const resolvers = {
       throw AuthenticationError;
     },
     allPosts: async () => {
-      return await Post.find();
+      return await Post.find().sort({createdAt: -1});
     }
   },
 
