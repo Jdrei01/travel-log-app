@@ -1,5 +1,5 @@
-import React from 'react'
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import React, { useEffect, useState } from 'react'
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '400px',
@@ -12,6 +12,7 @@ const center = {
 };
 
 function Map ({ posts }) {
+  const [coordinates, setCoordinates] = useState([]);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyAzvl6nelJ7MoPM0TcOqnVOr2PkoOUq_iw"
@@ -19,21 +20,31 @@ function Map ({ posts }) {
 
   const [location, setLocation] = React.useState('')
   const [map, setMap] = React.useState(null)
-  // const [coordinates, setCoordinates] = React.useState(null)
-  const coordinates = posts.map(post => {
-    return {
-      lat: post.lat,
-      lng: post.lng
-    }
+
+  useEffect(() => {
+    const values = posts.map((post) => {
+      console.log(post.lat, post.lng);
+
+      return {
+      lat: +post.lat,
+      lng: +post.lng
+    };
   });
 
+  setCoordinates(values);
+}, []);    
+
   const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance
-    const bounds = new window.google.maps.LatLngBounds(center);
+    const bounds = new window.google.maps.LatLngBounds();
+    
+    coordinates.forEach[(location) => {
+    bounds.extend(new window.google.maps.LatLng(location.lat, location.lng));
+    }];
+    
     map.fitBounds(bounds);
 
-    setMap(map)
-  }, [])
+    setMap(map);
+  }, [coordinates]);
 
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
@@ -80,6 +91,9 @@ function Map ({ posts }) {
       onClick={handleGetCoordinates}
     >
       { /* Child components, such as markers, info windows, etc. */}
+      {[coordinates.map((location, index) => {
+        return <Marker key={index} position={location} />
+      })]}
       <></>
     </GoogleMap>
   ) : <></>
