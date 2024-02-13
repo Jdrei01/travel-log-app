@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
@@ -11,7 +11,7 @@ const center = {
   lng: -118.00
 };
 
-function Map ({ posts }) {
+function Map({ posts }) {
   const [coordinates, setCoordinates] = useState([]);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -19,28 +19,28 @@ function Map ({ posts }) {
   })
 
   const [location, setLocation] = React.useState('')
-  const [map, setMap] = React.useState(null)
+  const [map, setMap] = React.useState(null);
 
   useEffect(() => {
     const values = posts.map((post) => {
       console.log(post.lat, post.lng);
 
       return {
-      lat: +post.lat,
-      lng: +post.lng
-    };
-  });
+        lat: +post.lat,
+        lng: +post.lng
+      };
+    });
 
-  setCoordinates(values);
-}, []);    
+    setCoordinates(values);
+  }, []);
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
-    
-    coordinates.forEach[(location) => {
-    bounds.extend(new window.google.maps.LatLng(location.lat, location.lng));
-    }];
-    
+
+    coordinates.forEach((location) => {
+      bounds.extend(new window.google.maps.LatLng(location.lat, location.lng));
+    });
+
     map.fitBounds(bounds);
 
     setMap(map);
@@ -91,10 +91,9 @@ function Map ({ posts }) {
       onClick={handleGetCoordinates}
     >
       { /* Child components, such as markers, info windows, etc. */}
-      {[coordinates.map((location, index) => {
+      {(coordinates.map((location, index) => {
         return <Marker key={index} position={location} />
-      })]}
-      <></>
+      }))}
     </GoogleMap>
   ) : <></>
 }
