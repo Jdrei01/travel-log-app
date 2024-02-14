@@ -12,7 +12,15 @@ Run npm i to install basic dependencies, and do npm run develop to run the progr
 
 ## Usage
 
+This is how the website should look like:
+
+![Travel Log App](./assets/images/Blitzscreenshot.png)
+
+![Travel Log App Map](./assets/images/Blitzscreenshot.png)
+
 ## Application Link
+
+
 
 ## Credits
 
