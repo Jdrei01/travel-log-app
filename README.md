@@ -20,13 +20,13 @@ This is how the website should look like:
 
 ## Application Link
 
-
+https://travel-log-app-2f2b22f463d1.herokuapp.com/
 
 ## Credits
 
 - William Tsai (github.com/1ncarnat10n), https://github.com/1ncarnat10n
-- Jandrei Tim (github.com/Jdrei01), https://github.com/Jdrei01
-- Tavonn (github.com/TavonnS), https://github.com/TavonnS
+- Jandrei Timoteo (github.com/Jdrei01), https://github.com/Jdrei01
+- Tavonn Shafie (github.com/TavonnS), https://github.com/TavonnS
 - Majd Hamdallah (github.com/Majdhamdallah4), https://github.com/Majdhamdallah4
 - Kahlil Bausley (github.com/kahlilbausley), https://github.com/kahlilbausley
 - Denise Vasquez (github.com/deemonroee), https://github.com/deemonroee
