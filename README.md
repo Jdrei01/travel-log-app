@@ -14,9 +14,9 @@ Run npm i to install basic dependencies, and do npm run develop to run the progr
 
 This is how the website should look like:
 
-![Travel Log App](./assets/images/Blitzscreenshot.png)
+![Travel Log App](./client/public/travellog.png)
 
-![Travel Log App Map](./assets/images/Blitzscreenshot.png)
+![Travel Log App Map](./client/public/travellog2.png)
 
 ## Application Link
 
